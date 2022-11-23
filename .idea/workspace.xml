@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6c7d203-c1a7-40a0-b48e-7ecc3a8d6f3c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount_COVID19_firma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount_COVID19_firma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount_INT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount_INT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MenuService.java" afterDir="false" />
+    <list default="true" id="b6c7d203-c1a7-40a0-b48e-7ecc3a8d6f3c" name="Default Changelist" comment="save objects to array, owrking on loginFunctionality">
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/META-INF/BankApp.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_COVID19_firma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_COVID19_firma.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_INT.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_INT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/Driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/MenuService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +75,29 @@
       <option name="presentableId" value="Default" />
       <updated>1668846141843</updated>
     </task>
+    <task id="LOCAL-00001" summary="save objects to array, owrking on loginFunctionality">
+      <created>1669220565361</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669220565361</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="save objects to array, owrking on loginFunctionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="save objects to array, owrking on loginFunctionality" />
   </component>
 </project>
