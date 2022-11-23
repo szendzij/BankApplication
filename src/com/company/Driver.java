@@ -1,26 +1,23 @@
-package com.company;//package com.company;
-//
-//public class Driver {
-//
-//    public static void main(String[] args) {
-//	// write your code here
-//    }
-//}
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.swing.JOptionPane;
 
 public class Driver {
+
     public static void main(String[] args) {
-        BankAccount bankAccount = new BankAccount("", 0, 0.0);
         JOptionPane.showMessageDialog(null, "Witaj w aplikacji bankowej");
+        BankAccount account = new BankAccount("", 0, 0.0);
         boolean exitRequested = false;
-        while(!exitRequested) {
+        while (!exitRequested) {
             switch (MenuService.showMenu()) {
                 case "Rejestracja nowego konta":
-                    bankAccount.registerAccount();
+                    account.registerAccount();
                     break;
                 case "Zalogowanie się do istniejącego konta":
-                    bankAccount.loginAccount();
+                    account.loginAccount();
                     break;
                 case "Exit":
                     JOptionPane.showMessageDialog(null, "Zamknięcie programu");
@@ -33,4 +30,3 @@ public class Driver {
 
     }
 }
-

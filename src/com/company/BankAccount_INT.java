@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import java.math.BigDecimal;
 
 public class BankAccount_INT extends BankAccount{
 
@@ -17,6 +18,7 @@ public class BankAccount_INT extends BankAccount{
     public void setOrigin(String origin) {
         this.origin = origin;
     }
+
     @Override
     public String toString() {
         JOptionPane.showMessageDialog(null,

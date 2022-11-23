@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class MenuService {
     public static final String[] mainMenuItems = { "Rejestracja nowego konta", "Zalogowanie się do istniejącego konta", "Exit" };
-    public static final String[] accountTypeMenuItems = { "Osobiste", "Firmowe", "Międzynarodowe" };
+    public static final String[] accountTypeMenuItems = { "Firmowe", "Osobiste", "Międzynarodowe" };
     public static final String[] accountActionMenuItems = { "Wpłata", "Wypłata" };
 
     private static JFrame frame = new JFrame("Menu systemu bankowego");

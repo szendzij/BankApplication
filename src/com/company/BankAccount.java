@@ -1,23 +1,24 @@
 package com.company;
 
-import javax.swing.*;
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class BankAccount implements Serializable {
+import javax.swing.*;
+
+public class BankAccount {
     private double balance;
     private int id;
     private static int uid = 0;
     private String name;
-    List<BankAccount> bankAccounts = new ArrayList<>();
+    private final List<BankAccount> bankAccounts;
 
     public BankAccount(String name, int id, double balance) {
         this.name = name;
         this.id = uid++;
         this.balance = balance;
+        bankAccounts = new ArrayList<>();
     }
-
 
     public String getName() {
         return name;
@@ -39,11 +40,7 @@ public class BankAccount implements Serializable {
         this.balance = balance;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void financingOperationsOnAccount() {
+    public void manageAccount() {
 
         String actionType = MenuService.showActionMenu();
         switch (actionType) {
@@ -52,68 +49,60 @@ public class BankAccount implements Serializable {
                 break;
             case "Wypłata":
                 withdraw(Double.parseDouble(JOptionPane.showInputDialog("Wprowadź kwotę wypłaty")));
-
                 break;
         }
 
     }
 
-    public void registerAccount() {
+    public  void registerAccount() {
         String accountType = MenuService.showMenuAccountType();
-        switch (accountType){
+        setBalance(0.0);
+        switch (accountType) {
             case "Firmowe":
                 this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
-                BankAccount_firma companyAccount = new BankAccount_firma(this.getName(), this.getId(), 0.0);
+                this.setBalance(5000);
+                BankAccount_firma companyAccount = new BankAccount_firma(this.getName(), this.getId(), this.getBalance());
                 companyAccount.setREGON(JOptionPane.showInputDialog("Wprowadź numer regon"));
-                companyAccount.toString();
                 bankAccounts.add(companyAccount);
-                System.out.println(bankAccounts);
+                companyAccount.toString();
                 break;
             case "Osobiste":
-                this.name = JOptionPane.showInputDialog("Wprowadź nazwę konta");
-                BankAccount personalAccount = new BankAccount(this.name, this.id, this.balance);
-                
+                this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
+                BankAccount personalAccount = new BankAccount(this.getName(), this.getId(), this.getBalance());
                 bankAccounts.add(personalAccount);
-
-
-                financingOperationsOnAccount();
                 personalAccount.toString();
-
-//                System.out.println(bankAccounts);
                 break;
             case "Międzynarodowe":
                 this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
-                BankAccount_INT internationalAccount = new BankAccount_INT(this.getName(), this.getId(), 0.0);
+                BankAccount_INT internationalAccount = new BankAccount_INT(this.getName(), this.getId(), this.getBalance());
                 internationalAccount.setOrigin(JOptionPane.showInputDialog("Wprowadź kraj pochodzenia"));
                 bankAccounts.add(internationalAccount);
                 internationalAccount.toString();
-
                 break;
         }
-
+        for(BankAccount q : bankAccounts) {System.out.println("In loop : " + q.getName() +" "+ q.getBalance() +" "+ q.getId());}
     }
 
-
     public void loginAccount() {
-        String name = JOptionPane.showInputDialog("Wprowadź nazwę konta");
-        this.setId(this.id);
-        this.setBalance(Double.parseDouble(JOptionPane.showInputDialog("Wprowadź inicjalną kwotę na koncie")));
+        String accountName = JOptionPane.showInputDialog("Wprowadź nazwę konta");
+        bankAccounts.stream().filter(a -> a.getName() == accountName);
+
         toString();
     }
 
-
     public void deposit(double depositAmount) {
         this.balance += depositAmount;
+        this.setBalance(this.getBalance());
         JOptionPane.showMessageDialog(null, "Wpływ: " + depositAmount + " PLN\n" +
-        "Stan konta: " + this.balance + " PLN");
+                "Stan konta: " + this.balance + " PLN");
     }
 
     public void withdraw(double withdrawAmount) {
-        if(this.balance < withdrawAmount) {
+        if (this.balance < withdrawAmount) {
             JOptionPane.showMessageDialog(null, "Nie masz odpowiedniej ilości środków na koncie");
         } else {
             this.balance -= withdrawAmount;
-            JOptionPane.showMessageDialog(null,"Wypłata: " + withdrawAmount + " PLN\n" +
+            JOptionPane.showMessageDialog(null, "Wypłata: " + withdrawAmount + " PLN\n" +
                     "Stan konta: " + this.balance);
         }
 
@@ -126,8 +115,8 @@ public class BankAccount implements Serializable {
     public String toString() {
         JOptionPane.showMessageDialog(null,
                 "Nazwa użytkownika: " + this.getName() + "\n" +
-                "Identyfikator użytkownika: " + this.getId() + "\n" +
-                "Aktualna dostepna ilość środków: " + this.getBalance() + "PLN" );
+                        "Identyfikator użytkownika: " + this.getId() + "\n" +
+                        "Aktualna dostepna ilość środków: " + this.getBalance() + "PLN");
         return null;
     }
 }
