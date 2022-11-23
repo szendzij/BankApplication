@@ -9,7 +9,7 @@ public class Driver {
 
     public static void main(String[] args) {
         JOptionPane.showMessageDialog(null, "Witaj w aplikacji bankowej");
-        BankAccount account = new BankAccount("", 0, 0.0);
+        BankAccount account = new BankAccount("", 0, 0.0, 000000000);
         boolean exitRequested = false;
         while (!exitRequested) {
             switch (MenuService.showMenu()) {

@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6c7d203-c1a7-40a0-b48e-7ecc3a8d6f3c" name="Default Changelist" comment="save objects to array, owrking on loginFunctionality">
-      <change beforePath="$PROJECT_DIR$/out/production/BankApp/META-INF/BankApp.kotlin_module" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/ParserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_COVID19.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_COVID19.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_COVID19_firma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_COVID19_firma.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_INT.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_INT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_firma.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/BankAccount_firma.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/Driver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BankApp/com/company/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BankApp/com/company/MenuService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount_COVID19.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount_COVID19.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount_COVID19_firma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount_COVID19_firma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount_INT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount_INT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/BankAccount_firma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/BankAccount_firma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MenuService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

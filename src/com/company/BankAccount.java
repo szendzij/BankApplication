@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.*;
 
@@ -11,12 +9,14 @@ public class BankAccount {
     private int id;
     private static int uid = 0;
     private String name;
+    private int phoneNumber;
     private final List<BankAccount> bankAccounts;
 
-    public BankAccount(String name, int id, double balance) {
+    public BankAccount(String name, int id, double balance, int phoneNumber) {
         this.name = name;
         this.id = uid++;
         this.balance = balance;
+        this.phoneNumber = phoneNumber;
         bankAccounts = new ArrayList<>();
     }
 
@@ -32,8 +32,16 @@ public class BankAccount {
         return id;
     }
 
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setBalance(double balance) {
@@ -58,36 +66,56 @@ public class BankAccount {
         String accountType = MenuService.showMenuAccountType();
         setBalance(0.0);
         switch (accountType) {
+            case "Osobiste":
+                this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
+                this.setPhoneNumber(Integer.parseInt(JOptionPane.showInputDialog("Wprowadź numer telefonu")));
+                BankAccount personalAccount = new BankAccount(this.getName(), this.getId(), this.getBalance(), this.getPhoneNumber());
+                bankAccounts.add(personalAccount);
+                personalAccount.toString();
+                break;
             case "Firmowe":
                 this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
+                this.setPhoneNumber(Integer.parseInt(JOptionPane.showInputDialog("Wprowadź numer telefonu")));
                 this.setBalance(5000);
-                BankAccount_firma companyAccount = new BankAccount_firma(this.getName(), this.getId(), this.getBalance());
+                BankAccount_firma companyAccount = new BankAccount_firma(this.getName(), this.getId(), this.getBalance(), this.getPhoneNumber());
                 companyAccount.setREGON(JOptionPane.showInputDialog("Wprowadź numer regon"));
                 bankAccounts.add(companyAccount);
                 companyAccount.toString();
                 break;
-            case "Osobiste":
-                this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
-                BankAccount personalAccount = new BankAccount(this.getName(), this.getId(), this.getBalance());
-                bankAccounts.add(personalAccount);
-                personalAccount.toString();
-                break;
             case "Międzynarodowe":
                 this.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
-                BankAccount_INT internationalAccount = new BankAccount_INT(this.getName(), this.getId(), this.getBalance());
+                this.setPhoneNumber(Integer.parseInt(JOptionPane.showInputDialog("Wprowadź numer telefonu")));
+                BankAccount_INT internationalAccount = new BankAccount_INT(this.getName(), this.getId(), this.getBalance(), this.getPhoneNumber());
                 internationalAccount.setOrigin(JOptionPane.showInputDialog("Wprowadź kraj pochodzenia"));
                 bankAccounts.add(internationalAccount);
                 internationalAccount.toString();
                 break;
         }
-        for(BankAccount q : bankAccounts) {System.out.println("In loop : " + q.getName() +" "+ q.getBalance() +" "+ q.getId());}
+    }
+
+    public BankAccount isAccountExist() {
+        return null;
     }
 
     public void loginAccount() {
         String accountName = JOptionPane.showInputDialog("Wprowadź nazwę konta");
-        bankAccounts.stream().filter(a -> a.getName() == accountName);
-
-        toString();
+        int accountNumber = Integer.parseInt(JOptionPane.showInputDialog("Wprowadź number telefonu"));
+        boolean accuntFounded = false;
+        while(!accuntFounded) {
+            Optional<BankAccount> matchingAccount = bankAccounts
+                    .stream()
+                    .filter(p -> p.getName().equals(accountName))
+//                    .filter(v -> p.getPhoneNumber())
+                    .findFirst();
+            if(matchingAccount.isPresent()) {
+                JOptionPane.showMessageDialog(null, "ZNALEZIONO KONTO");
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "NIE ZNALEZIONO KONTA ");
+                accuntFounded = true;
+                break;
+            }
+        }
     }
 
     public void deposit(double depositAmount) {
@@ -115,6 +143,7 @@ public class BankAccount {
     public String toString() {
         JOptionPane.showMessageDialog(null,
                 "Nazwa użytkownika: " + this.getName() + "\n" +
+                        "Numer telefonu: " + this.getPhoneNumber() + "\n" +
                         "Identyfikator użytkownika: " + this.getId() + "\n" +
                         "Aktualna dostepna ilość środków: " + this.getBalance() + "PLN");
         return null;

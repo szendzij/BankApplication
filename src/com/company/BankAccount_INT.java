@@ -11,8 +11,8 @@ public class BankAccount_INT extends BankAccount{
         return origin;
     }
 
-    public BankAccount_INT(String name, int id, double balance) {
-        super(name, id, balance);
+    public BankAccount_INT(String name, int id, double balance, int phoneNumber) {
+        super(name, id, balance, phoneNumber);
     }
 
     public void setOrigin(String origin) {
@@ -23,6 +23,7 @@ public class BankAccount_INT extends BankAccount{
     public String toString() {
         JOptionPane.showMessageDialog(null,
                 "Nazwa użytkownika: " + this.getName() + "\n" +
+                        "Numer telefonu: " + this.getPhoneNumber() + "\n" +
                         "Identyfikator użytkownika: " + this.getId() + "\n" +
                         "Aktualna dostepna ilość środków: " + this.getBalance() + "PLN" + "\n" +
                         "Kraj pochodzenia: " + this.getOrigin());
