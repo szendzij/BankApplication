@@ -3,11 +3,11 @@ package com.company;
 import javax.swing.*;
 
 public class MenuService {
-    public static final String[] mainMenuItems = { "Rejestracja nowego konta", "Zalogowanie się do istniejącego konta", "Exit" };
-    public static final String[] accountTypeMenuItems = { "Osobiste", "Firmowe", "Międzynarodowe" };
-    public static final String[] accountActionMenuItems = { "Wpłata", "Wypłata" };
+    public static final String[] mainMenuItems = {"Rejestracja nowego konta", "Zalogowanie się do istniejącego konta", "Exit"};
+    public static final String[] accountTypeMenuItems = {"Osobiste", "Firmowe", "Międzynarodowe"};
+    public static final String[] accountActionMenuItems = {"Informacje o stanie konta", "Wpłata środków", "Wypłata środków", "Zamknięcie konta", "Wylogowanie"};
 
-    private static JFrame frame = new JFrame("Menu systemu bankowego");
+    private static final JFrame frame = new JFrame("Menu systemu bankowego");
 
     public static String showMenu() {
         String value = (String) JOptionPane.showInputDialog(frame,
@@ -17,7 +17,7 @@ public class MenuService {
                 null,
                 mainMenuItems,
                 mainMenuItems[0]);
-        if(value != null && value.length() > 0) {
+        if (value != null && value.length() > 0) {
             return value;
         } else {
             JOptionPane.showMessageDialog(null, "Zamknięcie programu");
@@ -35,7 +35,7 @@ public class MenuService {
                 accountTypeMenuItems,
                 accountTypeMenuItems[0]);
 
-        if(value != null && value.length() > 0) {
+        if (value != null && value.length() > 0) {
             return value;
         } else {
             return "";
@@ -51,7 +51,7 @@ public class MenuService {
                 accountActionMenuItems,
                 accountActionMenuItems[0]);
 
-        if(value != null && value.length() > 0) {
+        if (value != null && value.length() > 0) {
             return value;
         } else {
             return "";
