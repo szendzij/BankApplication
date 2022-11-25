@@ -29,10 +29,10 @@ public class Driver extends BankAccount {
                     driver.manageLoggedAccount();
                     break;
                 case "Zapis danych do pliku":
-                    driver.saveAccountsToFile(bankAccounts);
+                    driver.saveAccountsToFile();
                     break;
                 case "Pobranie danych z pliku":
-                    driver.readAccountsFromFile(bankAccounts);
+                    driver.readAccountsFromFile();
                     break;
                 case "Exit":
                     JOptionPane.showMessageDialog(null, "Zamknięcie programu");
@@ -61,7 +61,7 @@ public class Driver extends BankAccount {
                 companyAccount.setREGON(JOptionPane.showInputDialog("Wprowadź numer regon"));
                 companyAccount.idRandomizer(companyAccount);
                 bankAccounts.add(companyAccount);
-                driver.info(companyAccount);
+                info(companyAccount);
                 break;
             case "Międzynarodowe":
                 BankAccount_INT internationalAccount = new BankAccount_INT();
@@ -69,12 +69,12 @@ public class Driver extends BankAccount {
                 internationalAccount.setOrigin(JOptionPane.showInputDialog("Wprowadź kraj pochodzenia"));
                 internationalAccount.idRandomizer(internationalAccount);
                 bankAccounts.add(internationalAccount);
-                driver.info(internationalAccount);
+                info(internationalAccount);
                 break;
         }
     }
 
-    public void saveAccountsToFile(ArrayList accountList) {
+    public void saveAccountsToFile() {
         try {
             FileOutputStream writeData = new FileOutputStream(new File("src/main/resources/accounts.txt"));
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
@@ -93,12 +93,12 @@ public class Driver extends BankAccount {
         }
     }
 
-    public  void readAccountsFromFile(ArrayList accountList) {
+    public  void readAccountsFromFile() {
         try {
             FileInputStream readData = new FileInputStream("src/main/resources/accounts.txt");
             ObjectInputStream readStream = new ObjectInputStream(readData);
 
-            setBankAccounts((ArrayList) readStream.readObject());
+            setBankAccounts((ArrayList<BankAccount>) readStream.readObject());
 
             JOptionPane.showMessageDialog(null, "Pobrano następujące dane:");
             getBankAccounts().forEach(this::info);
@@ -109,9 +109,7 @@ public class Driver extends BankAccount {
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Problem z pikiem");
             System.out.println("File not found");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

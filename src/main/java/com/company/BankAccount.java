@@ -63,7 +63,7 @@ public class BankAccount implements Serializable {
 
     @Override
     public String toString() {
-        return "Nazwa użytkownika: " + this.getName() + "\n" + "Identyfikator użytkownika: " + this.getId() + "\n" + "Aktualna dostępna ilość_środków: " + this.getBalance() + "PLN";
+        return "Nazwa użytkownika: " + this.getName() + "\n" + "Identyfikator użytkownika: " + this.getId() + "\n" + "Aktualna dostępna ilość środków: " + this.getBalance() + " PLN";
     }
 
 }
