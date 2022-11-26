@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6c7d203-c1a7-40a0-b48e-7ecc3a8d6f3c" name="Default Changelist" comment="save objects to array, owrking on loginFunctionality">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_digester_commons_digester_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_validator_commons_validator_1_7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_23_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BankApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BankApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/AccountActionMenuItems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/AccountTypeMenuItems.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/MainMenuItems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/ParserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/accounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/accounts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/accounts.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/accounts.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/BankAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/BankAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/company/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/company/ParserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/BankAccount_COVID19.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/BankAccount_COVID19.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
