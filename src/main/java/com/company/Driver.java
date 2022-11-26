@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class Driver extends BankAccount {
-    static ArrayList<BankAccount> bankAccounts = new ArrayList<>();
-    static Driver driver = new Driver();
+    private static final Driver driver = new Driver();
 
-    public static ArrayList<BankAccount> getBankAccounts() {
+    private static ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+
+    private static ArrayList<BankAccount> getBankAccounts() {
         return bankAccounts;
     }
 
@@ -44,24 +45,38 @@ public class Driver extends BankAccount {
         System.exit(0);
     }
 
+    public Boolean checkIfAccountTypeIsCovid() {
+        boolean hasDateFormat = false;
+        LocalDate dateOfOpenAccount = null;
+        LocalDate startCovidDate = LocalDate.of(2020, 04, 01);
+        LocalDate endCovidDate = LocalDate.of(2022, 01, 01);
+        while (!hasDateFormat) {
+            String enteredDate = validateEnteredString("Wprowadź datę otwarcia konta w podanym formacie (YYYY-MM-DD)");
+            if (isDateValid(enteredDate)) {
+                dateOfOpenAccount = LocalDate.parse(enteredDate);
+                hasDateFormat = true;
+            }
+        }
+        return !(dateOfOpenAccount.isAfter(startCovidDate) && dateOfOpenAccount.isBefore(endCovidDate));
+
+    }
+
     public void registerAccount() {
         String accountType = MenuService.showMenuAccountType();
         driver.setBalance(0.0);
         switch (accountType) {
             case "Osobiste":
                 if (checkIfAccountTypeIsCovid()) {
-                    System.out.println("KONTO OSOBISTE");
                     BankAccount personalAccount = new BankAccount();
-                    personalAccount.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
-                    personalAccount.setStatus(false);
+                    personalAccount.setName(validateEnteredString("Wprowadź nazwę konta"));
+                    personalAccount.setIsCovid(false);
                     bankAccounts.add(personalAccount);
                     personalAccount.idRandomizer(personalAccount);
                     driver.info(personalAccount);
                     break;
                 } else {
-                    System.out.println("KONTO OSOBISTE COVID");
                     BankAccount_COVID19 personalAccountCOVID19 = new BankAccount_COVID19();
-                    personalAccountCOVID19.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
+                    personalAccountCOVID19.setName(validateEnteredString("Wprowadź nazwę konta"));
                     bankAccounts.add(personalAccountCOVID19);
                     personalAccountCOVID19.idRandomizer(personalAccountCOVID19);
                     driver.info(personalAccountCOVID19);
@@ -69,43 +84,33 @@ public class Driver extends BankAccount {
                 }
 
             case "Firmowe":
-                if (!checkIfAccountTypeIsCovid()) {
-                    System.out.println("KONTO FIRMOWE");
+                if (checkIfAccountTypeIsCovid()) {
                     BankAccount_firma companyAccount = new BankAccount_firma();
-                    companyAccount.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
+                    companyAccount.setName(validateEnteredString("Wprowadź nazwę konta"));
                     companyAccount.setBalance(5000);
-                    companyAccount.setREGON(JOptionPane.showInputDialog("Wprowadź numer regon"));
+                    companyAccount.setREGON(validateEnteredString("Wprowadź numer regon"));
                     bankAccounts.add(companyAccount);
                     info(companyAccount);
                     break;
                 } else {
-                    System.out.println("KONTO FIRMA COVID");
                     BankAccount_COVID19_firma companyAccountCOVID19 = new BankAccount_COVID19_firma();
-                    companyAccountCOVID19.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
+                    companyAccountCOVID19.setName(validateEnteredString("Wprowadź nazwę konta"));
                     companyAccountCOVID19.setBalance(5000);
-                    companyAccountCOVID19.setREGON(JOptionPane.showInputDialog("Wprowadź numer regon"));
-                    companyAccountCOVID19.setStatus(false);
+                    companyAccountCOVID19.setREGON(validateEnteredString("Wprowadź numer regon"));
+                    companyAccountCOVID19.setIsCovid(false);
                     bankAccounts.add(companyAccountCOVID19);
                     info(companyAccountCOVID19);
                     break;
                 }
             case "Międzynarodowe":
                 BankAccount_INT internationalAccount = new BankAccount_INT();
-                internationalAccount.setName(JOptionPane.showInputDialog("Wprowadź nazwę konta"));
-                internationalAccount.setOrigin(JOptionPane.showInputDialog("Wprowadź kraj pochodzenia"));
+                internationalAccount.setName(validateEnteredString("Wprowadź nazwę konta"));
+                internationalAccount.setOrigin(validateEnteredString("Wprowadź kraj pochodzenia"));
                 internationalAccount.idRandomizer(internationalAccount);
                 bankAccounts.add(internationalAccount);
                 info(internationalAccount);
                 break;
         }
-    }
-
-    public static Boolean checkIfAccountTypeIsCovid() {
-        String enteredDate = JOptionPane.showInputDialog("Wprowadź datę otwarcia konta w podanym formacie (YYYY-MM-DD)");
-        LocalDate dateOfOpenAccount = LocalDate.parse(enteredDate);
-        LocalDate startCovidDate = LocalDate.of(2020, 04, 01);
-        LocalDate endCovidDate = LocalDate.of(2022, 01, 01);
-        return (dateOfOpenAccount.isAfter(startCovidDate) && dateOfOpenAccount.isBefore(endCovidDate));
     }
 
     public void saveAccountsToFile() {
@@ -121,7 +126,6 @@ public class Driver extends BankAccount {
 
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Problem z plikiem");
-            System.out.println("File not found");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -141,10 +145,10 @@ public class Driver extends BankAccount {
             readData.close();
 
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Problem z pikiem");
-            System.out.println("File not found");
+            JOptionPane.showMessageDialog(null, "Problem z plikiem");
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+
+            JOptionPane.showMessageDialog(null,"Brak danych zapisanych w pliku");
         }
     }
 
@@ -160,17 +164,17 @@ public class Driver extends BankAccount {
     }
 
     public void manageLoggedAccount() {
-        String accountName = JOptionPane.showInputDialog("Wprowadź nazwę konta");
+        String accountName = validateEnteredString("Wprowadź nazwę konta");
         BankAccount account = isAccountExist(accountName);
         boolean exitRequested = false;
         while (account != null && !exitRequested) {
             String selectedOption = MenuService.showActionMenu();
             switch (selectedOption) {
                 case "Wpłata środków":
-                    account.deposit(account, Double.parseDouble(JOptionPane.showInputDialog("Wprowadź kwotę wpłacanych środków")));
+                    account.deposit(account, Double.parseDouble(validateEnteredString("Wprowadź kwotę wpłacanych środków")));
                     break;
                 case "Wypłata środków":
-                    account.withdraw(account, Double.parseDouble(JOptionPane.showInputDialog("Wprowadź kwotę wypłacanych środków")));
+                    account.withdraw(account, Double.parseDouble(validateEnteredString("Wprowadź kwotę wypłacanych środków")));
                     break;
                 case "Zamknięcie konta":
                     exitRequested = closeAccount(account);
@@ -187,7 +191,7 @@ public class Driver extends BankAccount {
     }
 
     public boolean closeAccount(BankAccount account) {
-        if (!getStatus()) {
+        if (!getIsCovid()) {
             int value = JOptionPane.showConfirmDialog(null, "Czy aby na pewno chcesz zamknąć konto?", "System bankowy", JOptionPane.YES_NO_OPTION);
             switch (value) {
                 case 0:
@@ -205,4 +209,22 @@ public class Driver extends BankAccount {
             return false;
         }
     }
+
+    public String validateEnteredString(String dialogInput) {
+        boolean isValueOk = false;
+        String value = null;
+        while (!isValueOk) {
+            value = JOptionPane.showInputDialog(dialogInput);
+            if (value == null || value.length() == 0) {
+                JOptionPane.showMessageDialog(null, "Podano pustą wartość");
+            } else if (value.length() < 3) {
+                JOptionPane.showMessageDialog(null, "Wprowadzona wartość ma mniej niż 2 znaki");
+            } else {
+                isValueOk = true;
+            }
+        }
+        return value;
+    }
+
+
 }
