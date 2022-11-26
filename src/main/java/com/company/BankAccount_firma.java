@@ -19,9 +19,8 @@ public class BankAccount_firma extends BankAccount {
     @Override
     public String toString() {
         return "Nazwa użytkownika: " + this.getName() + "\n" +
-                "Identyfikator użytkownika: " + this.getId() + "\n" +
-                "Aktualna dostepna ilość środków: " + this.getBalance() + "PLN" + "\n" +
-                "Numer regon: " + this.getREGON();
+                "Numer regon: " + this.getREGON() + "\n" +
+                "Aktualna dostepna ilość środków: " + this.getBalance() + "PLN";
     }
 
 }

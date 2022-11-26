@@ -2,11 +2,14 @@ package com.company;
 
 import javax.swing.*;
 
+
 public class MenuService {
     public static final String[] mainMenuItems = {"Rejestracja nowego konta", "Zalogowanie się do istniejącego konta", "Zapis danych do pliku", "Pobranie danych z pliku", "Exit"};
     public static final String[] accountTypeMenuItems = {"Osobiste", "Firmowe", "Międzynarodowe"};
     public static final String[] accountActionMenuItems = {"Informacje o stanie konta", "Wpłata środków", "Wypłata środków", "Zamknięcie konta", "Wylogowanie"};
     private static final JFrame frame = new JFrame("Menu systemu bankowego");
+
+
 
     public static String showMenu() {
         String value = (String) JOptionPane.showInputDialog(frame,

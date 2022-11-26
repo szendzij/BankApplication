@@ -8,10 +8,21 @@ public class BankAccount implements Serializable {
     private String id;
     private double balance;
     private String name;
+    private Boolean status = true;
 
+    private double depositLimit;
 
     public BankAccount() {
         this.id = String.valueOf(uid++);
+        this.status = true;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public String getName() {
@@ -49,8 +60,14 @@ public class BankAccount implements Serializable {
     }
 
     public void withdraw(BankAccount account, double withdrawAmount) {
+        account.depositLimit += withdrawAmount;
+        System.out.println(account.depositLimit);
+
         if (account.balance <= withdrawAmount) {
+            account.depositLimit = 0.0;
             JOptionPane.showMessageDialog(null, "Nie masz odpowiedniej ilości środków na koncie");
+        } else if (account.depositLimit > 1000 && account.status) {
+            JOptionPane.showMessageDialog(null, "Dzienny limit został wykorzystany");
         } else {
             account.balance -= withdrawAmount;
             JOptionPane.showMessageDialog(null, "Wypłata: " + withdrawAmount + " PLN\n" + "Stan konta: " + account.balance + " PLN");
